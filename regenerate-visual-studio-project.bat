@@ -13,12 +13,10 @@ set "dirsToRemove=Plugins\MultiplayerSessions\Binaries Plugins\MultiplayerSessio
 REM Loop through and print the directory to be checked or removed
 for %%d in (%dirsToRemove%) do (
     set "dirPath=!projectPath!\%%d"
-    echo Checking directory "!dirPath!"
     if exist "!dirPath!" (
-        echo Removing directory "!dirPath!"
         rmdir /s /q "!dirPath!"
     ) else (
-        echo Directory "!dirPath!" does not exist.
+        rem echo Directory "!dirPath!" does not exist.
     )
 )
 
