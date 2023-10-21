@@ -22,6 +22,22 @@ for %%d in (%dirsToRemove%) do (
     )
 )
 
+REM Check for remaining directories
+set "remainingDirs="
+for %%d in (%dirsToRemove%) do (
+    set "dirPath=!projectPath!\%%d"
+    if exist "!dirPath!" (
+        set "remainingDirs=!remainingDirs! %%d"
+    )
+)
+
+REM Display appropriate messages
+if not "%remainingDirs%"=="" (
+    echo Unable to delete directories:%remainingDirs%
+) else (
+    echo All directories successfully deleted.
+)
+
 pause
 
 REM Run the UnrealBuildTool command
