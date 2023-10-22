@@ -8,7 +8,7 @@ set "projectPath=D:\Code\unreal-engine-multiplayer-shooter"
 set "projectName=Blaster.uproject"
 
 REM Define the directories to remove
-set "dirsToRemove=Plugins\MultiplayerSessions\Binaries Plugins\MultiplayerSessions\Intermediate Binaries Intermediate Saved"
+set "dirsToRemove=Plugins\MultiplayerSessions\Binaries Plugins\MultiplayerSessions\Intermediate Binaries Intermediate Saved DerivedDataCache"
 
 REM Loop through and print the directory to be checked or removed
 for %%d in (%dirsToRemove%) do (
@@ -36,10 +36,6 @@ if not "%remainingDirs%"=="" (
     echo All directories successfully deleted.
 )
 
-pause
-
-REM Run the UnrealBuildTool command
-"%enginePath%\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.exe" -projectfiles -project="%projectPath%\%projectName%"
-
+echo Remember to manually regenerate your Visual Studio project files or you won't be able to build.
 echo Script completed.
 pause
